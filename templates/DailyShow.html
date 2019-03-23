@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load widget_tweaks %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <title>DailyEntry</title>
+<style type="text/css">
+
+</style>
+</head>
+<body >
+
+
+  <div  class="jumbotron"  style=";border-radius: 0 !important;margin-bottom:100px;background-color:#0A0AAE;color:#ffffff">
+
+    <h1>Today's Entered Data</h1>
+      <span style="font-size:12px;color:#ffffff">Please Copy it and send to whatsaap</span>
+    <h2 style="color:#ffffff">Dr,Batra's</h2>
+<a href="/" role="button"  class="btn btn-lg btn-danger" style="float:right;font-weight:bold;">Home</a>
+  </div>
+</div>
+<div class="container">
+
+<center>
+<div class="col-sm-10 col-xs-10" >
+
+  <table class="table-striped table-bordered table-condensed">
+<tbody >
+ {% csrf_token %}
+
+
+        {% for data in Data %}
+ <tr>
+ <tr><td scope="col">Entered Date</td><td >  {{ data.date}} <br></td> </tr>
+ <tr><td scope="col">Emp Code</td> <td> {{ data.EmpId}} <br></td></tr>
+ <tr>  <td scope="col">Name </td>  <td> {{ data.Name}} <br> </td></tr>
+ <tr><td scope="col">Town</td>   <td>{{ data.Town }}<br></td></tr>
+<tr><td scope="col">Area</td>   <td>{{ data.Area }}<br></td></tr>
+ <tr><td scope="col">TC</td> <td>{{ data.TotalCalls }}<br></td></tr>
+ <tr><td scope="col">PC</td> <td>{{ data.PC }}<br></td></tr>
+ <tr><td scope="col">Sec Order Val</td> <td>{{ data.SecondaryOrderValue }}<br></td></tr>
+ <tr><td scope="col">Sec Coll Val</td> <td>{{ data.SecondaryCollectionValue }}<br></td></tr>
+ <tr><td scope="col">Cum Sec Sales</td> <td>{{ data.CumSecondarySales  }}<br></td></tr>
+ <tr><td scope="col">Cum Sec Coll Val</td> <td>{{ data.CumSecondaryCollectionValue }}<br></td></tr>
+ <tr><td scope="col">GT Only</td><td>{{ data.GTOnly }}<br></td></tr>
+ <tr><td scope="col">HA + Promoter Stores</td><td>{{ data.HAPromoterStores }}<br></td></tr>
+ <tr><td scope="col">MT-Stores</td><td>{{ data.MTStores }}<br></td></tr>
+ <tr><td scope="col">Cumm Coll</td><td>{{ data.CummCollection }}<br></td></tr>
+ <tr><tr><td scope="col">New Store Today</td><td>{{ data.NewStoresToday }}<br></td></tr>
+ <tr><td scope="col">New Store Comm</td><td>{{ data.NewStoresComm }}<br></td></tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</center>
+<div class="jumbotron" style=" border-radius: 0 !important;text-align:center;margin-bottom:0px;margin-top:100px;background-color:#0A0AAE;color:#ffffff">
+    All Rights Reserved By GeekyDrafts@2019<br>
+    Powered By Django
+</div>
+
+</body>
+</html>

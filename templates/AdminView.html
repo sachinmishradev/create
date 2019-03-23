@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load widget_tweaks %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.19.custom.min.js"></script>
+
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+    <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">
+
+    <script type="text/javascript">
+    function Aler(){
+      var fromdate  = document.getElementById("fromdate").value;
+      var todate  =  document.getElementById("todate").value;
+      if(fromdate == '' || todate == '')
+      {
+        alert("Please Select a Valid Date");
+        return;
+      }
+      var stra = "{% url 'export_users_xls'  fromdate=202  todate=302  %}".replace(/202/,fromdate);
+      stra = stra.replace(/302/,todate)
+
+      document.location.href = stra;
+}
+    </script>
+
+    <title>DailyEntry</title>
+</head>
+<body >
+
+  <div  class="jumbotron" style=";border-radius: 0 !important;margin-bottom:100px;background-color:#0A0AAE;color:#ffffff">
+    
+    <h1>Welcome <strong>{% if user.is_authenticated %} {{ user.username }} {% endif %}</strong> </h1>
+      <span style="font-size:12px;color:#ffffff">Here's Your data</span>
+    <h2 style="color:#ffffff">Dr,Batra's</h2>
+    <a href="/" role="button"  class="btn btn-lg btn-danger" style="margin-left:50px;float:right;font-weight:bold;">Home</a>
+    <a href="/logout" role="button"  class="btn btn-lg btn-danger" style="margin-left:50px;float:right;font-weight:bold;">Logout</a>
+
+  </div>
+
+  <div class="container">
+<div class="row">
+      <div class="col-sm-12 center">
+        <strong>From Date : </strong>&nbsp;&nbsp;&nbsp;&nbsp; <input style="padding-top:20px;padding-left:40px;width=800px;" type="text"  id="fromdate">
+      </div>
+      <div  class="col-sm-12 center" style="margin-top:50px;">
+        <strong>To Date   : </strong>&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"  id="todate" style="padding-left:40px;margin-top:50px;">
+      </div>
+</div>
+      <div class="col-sm-12">
+        <input type="button" onclick="Aler()" value="Export" style="margin-top:100px;font-size:20px;width:100%;" class="btn btn-lg btn-success">
+      </div>
+
+</div>
+
+
+<div class="jumbotron" style="border-radius: 0 !important;margin-bottom:0px;margin-top:150px;text-align:center;background-color:#0A0AAE;color:#ffffff">
+  All Rights Reserved By GeekyDrafts@2019<br>
+  Powered By Django
+</div>
+</body>
+</html>
+<script>
+
+    var fromdate = new ej.calendars.DatePicker({ width: "100%",format: 'yyyy-MM-dd' });
+    fromdate.appendTo('#fromdate');
+
+    var todate = new ej.calendars.DatePicker({ width: "100%",format: 'yyyy-MM-dd' });
+    todate.appendTo('#todate');
+</script>
